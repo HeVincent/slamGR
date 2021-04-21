@@ -1,8 +1,5 @@
 import csv
-import matplotlib.pyplot as plt
 import numpy as np
-import librosa
-import librosa.display
 import soundfile as sf
 
 with open('./raw/twoClass/Audio_data_two_class.csv','r') as csv_file: # point at csv file

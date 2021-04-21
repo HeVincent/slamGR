@@ -11,4 +11,7 @@ In order to improve efficiency of the system the samples will first be filtered,
 The music sample repository is open-source and are thus accesible to anyone. In order to incluse the music samples in the repository LFT was used.
 
 ## Dependancies
-- git LFS
+**python libraries**:
+-csv
+- numpy
+- soundfile
