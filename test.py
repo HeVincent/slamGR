@@ -8,16 +8,17 @@ import numpy as np
 #import sklearn
 #import os
 
-# Set up plotting style
-# matplotlib inline
-sns.set(style='whitegrid', font_scale=1.2)
+audio_data = np.genfromtxt('./twoClass/Audio_data_two_class.csv', delimiter=',', usecols = (1,2,3,4,5))
 
 # read the top n rows of csv file as a dataframe
-#df = pd.read_csv("./twoClass/Audio_data_two_class.csv", nrows=0)
+#df = pd.read_csv("./twoClass/Audio_data_two_class.csv", nrows=5, usecols = [0,1,2,3,4,5], low_memory = True, header=None)
+#df = pd.read_csv("./twoClass/Music_genres_two_class.csv", nrows=10, low_memory=True, header=None)
 #df.to_csv('./data/test.csv')
+print(df.head())
 
-audio_data = np.genfromtxt('./twoClass/Audio_data_two_class.csv', delimiter=',')
+
+#audio_data = np.genfromtxt('./twoClass/Audio_data_two_class.csv', delimiter=',')
 
 print('done')
 
-librosa.display.waveplot(audio_data[example_time_series_classical[i],:], sr=sampling_rate)
+#librosa.display.waveplot(audio_data[example_time_series_classical[i],:], sr=sampling_rate)
