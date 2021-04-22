@@ -2,12 +2,11 @@ import csv
 import numpy as np
 import soundfile as sf
 
-with open('./raw/twoClass/Audio_data_two_class.csv','r') as csv_file: # point at csv file
+with open('./data/twoClass/tcTrack1.csv','r') as csv_file: # point at csv file
+
     csv_reader = csv.reader(csv_file, delimiter=',') #reader instance
 
     track_data = next(csv_reader) # numerical track data
-    print(track_data)
     track = np.genfromtxt(track_data,delimiter=',') # numpy array
 
-    sf.write('test.wav', track, 22050) # write to .wav
-
+    sf.write('./tracks/twoClass/tc1.wav', track, 22050) # write to .wav
