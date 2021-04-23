@@ -1,0 +1,1 @@
+pip3 install matplotlib.pypplot librosa libroda.display numpy scipy seaborn soundfile sklearn
