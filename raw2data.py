@@ -20,12 +20,3 @@ with open('./raw/twoClass/Audio_data_two_class.csv','r') as csv_file: # point at
 
             csv_writer.writerow(track_data)
 
-
-
-
-
-        # track_data = next(csv_reader) # numerical track data
-        # track = np.genfromtxt(track_data,delimiter=',') # numpy array
-
-        # sf.write('./tracks/twoClass/tc1.wav', track, 22050) # write to .wav
-
