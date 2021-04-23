@@ -5,8 +5,10 @@ import scipy
 import matplotlib.pyplot as plt
 
 sampling_rate = 22050
+trackNR = 1
+trackName = 'tcTrack'+str(trackNR)
 
-with open('./data/twoClass/tcTrack1.csv','r') as csv_file: # point at csv file
+with open('./data/twoClass/'+trackName+'.csv','r') as csv_file: # point at csv file
 
     csv_reader = csv.reader(csv_file, delimiter=',') #reader instance
 
@@ -25,3 +27,5 @@ with open('./data/twoClass/tcTrack1.csv','r') as csv_file: # point at csv file
     plt.xlabel('Frequency')
     plt.ylabel('Power')
     plt.show()
+    plt.savefig('./graphics/twoClass/psd/'+trackName+"PSD.png")
+
