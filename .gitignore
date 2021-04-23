@@ -1,5 +1,6 @@
 *.csv
 !data/twoClass/*1.csv
+!data/twoClass/*00.csv
 *.bdic
 *.asv
 .vscode/
