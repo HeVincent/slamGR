@@ -1,4 +1,4 @@
 *.csv
 *.bdic
 *.asv
-./vscode
+.vscode/
