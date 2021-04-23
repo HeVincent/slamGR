@@ -1,5 +1,5 @@
 *.csv
-!./data/*.csv
+!data/twoClass/*1.csv
 *.bdic
 *.asv
 .vscode/
