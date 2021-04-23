@@ -1,2 +1,2 @@
-* linguist-vendored
+./misc/ linguist-vendored
 *.ipynb linguist-vendored=false
