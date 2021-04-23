@@ -1,2 +1,2 @@
-./misc/ linguist-vendored
-*.ipynb linguist-vendored=false
+./misc/* linguist-vendored
+Starter_notebook.ipynb linguist-vendored=false
