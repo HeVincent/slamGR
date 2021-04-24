@@ -1,10 +1,13 @@
-def raw2data(source, targetPath,targetName):
+def convert(sourceFile, targetPath,targetName):
+
+# targetname should be without file extension
+# targetPath should en with /
 
     import csv
     import numpy as np
 
     # with open('./raw/twoClass/Audio_data_two_class.csv','r') as csv_file: # point at csv file
-    with open(source,'r') as csv_file: # point at csv file
+    with open(sourceFile,'r') as csv_file: # point at csv file
 
         csv_reader = csv.reader(csv_file, delimiter=',') # reader for source csv
         row = 0
