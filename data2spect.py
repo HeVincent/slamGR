@@ -7,9 +7,9 @@ import matplotlib.pyplot as plt
 
 sampling_rate = 22050
 trackNR = 1
-trackName = 'tcTrack'+str(trackNR)
+trackName = 'miniTrack'+str(trackNR)
 
-with open('./data/twoClass/'+trackName+'.csv','r') as csv_file: # point at csv file
+with open('./data/mini/'+trackName+'.csv','r') as csv_file: # point at csv file
 
     csv_reader = csv.reader(csv_file, delimiter=',') #reader instance
 
@@ -17,11 +17,12 @@ with open('./data/twoClass/'+trackName+'.csv','r') as csv_file: # point at csv f
     track = np.genfromtxt(track_data,delimiter=',') # numpy array
 
     # Parameters of the short-time Fourier transform
-    STFT_window = 2048
-    STFT_interval = 512
+    STFT_window = 1949
+    STFT_interval = 512 
+    windowShape = 'hann' # rect, hann, hamming, bartlett
 
     # Compute spectrogram using the short-time Fourier transform (STFT)
-    short_Fourier_transform = librosa.stft(track, hop_length=STFT_interval, n_fft=STFT_window, window='hann')
+    short_Fourier_transform = librosa.stft(track, hop_length=STFT_interval, n_fft=STFT_window, window=windowShape)
     spectrogram = np.abs(short_Fourier_transform)
 
     # Plot spectrogram with a logarithmic frequency scale
@@ -31,6 +32,6 @@ with open('./data/twoClass/'+trackName+'.csv','r') as csv_file: # point at csv f
     plt.xlabel('Time')
     plt.ylabel('Frequency')
     plt.colorbar()
-    plt.savefig('./graphics/twoClass/spect/'+trackName+"Spect.png")
+    plt.savefig('./graphics/mini/spect/'+trackName+"SpectLargeInt.png")
 
 
