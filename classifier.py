@@ -1,42 +1,26 @@
-import sklearn
-import pandas as pd
-import csv
 import numpy as np
+import sklearn
+import csv
 
-genres = pd.read_csv('./raw/mini/Music_genres_mini.csv', sep=',', header=None).to_numpy()[:,0]
-
-with open('./data/mini/miniTrack1.csv','r') as csv_file: # point at csv file
-
-        csv_reader = csv.reader(csv_file, delimiter=',') #reader instance
-
-        track_data = next(csv_reader) # numerical track data
-        track = np.genfromtxt(track_data,delimiter=',') # numpy array
-
-tracks = track
-
-# for i in np.linspace(1,len(genres)-1,len(genres)-2):
-for i in range(1,3):
-    i = str(int(i+1))
-    print('track: '+i)
-
-    with open('./data/mini/miniTrack'+i+'.csv','r') as csv_file: # point at csv file
+# Define training and testing datasets
+with open('./data/train/miniTrain.csv','r') as csv_file: # point at csv file
 
         csv_reader = csv.reader(csv_file, delimiter=',') #reader instance
+        print('a')
+        X_train = np.genfromtxt(csv_file,delimiter=',') # numpy array
 
-        track_data = next(csv_reader) # numerical track data
-        track = np.genfromtxt(track_data,delimiter=',') # numpy array
+        print(X_train[0,0])
 
-    tracks = np.vstack((tracks,track))
+# X_test = audio_data[400:, :]
+# y_train = audio_label[:400]
+# y_test = audio_label[400:]
 
-np.savetxt("./data/train/saved_numpy_data.csv", tracks, delimiter=",")
+# Standardize features by removing the mean and scaling to unit variance
+scaler = sklearn.preprocessing.StandardScaler(copy=False)
+scaler.fit_transform(X_train)
+scaler.transform(X_test)
 
-# with open('./data/train/miniTrainer.csv','w') as new_file:
-#     print('miniTrainer.csv')
-
-#     csv_writer = csv.writer(new_file,delimiter=',')
-
-#     csv_writer.writerows(tracks)
-
-
-
-
+# Logistic regression model for music genre classification
+classifier = sklearn.linear_model.LogisticRegression(tol=1e-6, C=0.8, max_iter=200, random_state=0).fit(X_train, y_train)
+y_hat = classifier.predict(X_test)
+print('Baseline classifier accuracy: ' + str(round(100*np.mean(y_hat == y_test),2)) + ' %')
