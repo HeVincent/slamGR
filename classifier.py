@@ -1,26 +1,24 @@
 import numpy as np
 import sklearn
 import csv
+import pandas as pd
+from sklearn import preprocessing
+from sklearn import linear_model
 
 # Define training and testing datasets
-with open('./data/train/miniTrain.csv','r') as csv_file: # point at csv file
+xTrain = np.load('./xTrain.npy')
+xTest = np.load('./xTest.npy')
 
-        csv_reader = csv.reader(csv_file, delimiter=',') #reader instance
-        print('a')
-        X_train = np.genfromtxt(csv_file,delimiter=',') # numpy array
+yTrain = pd.read_csv('./raw/mini/Music_genres_mini.csv', sep=',', header=None).to_numpy()[:400,0]
+yTest = pd.read_csv('./raw/mini/Music_genres_mini.csv', sep=',', header=None).to_numpy()[400:,0]
 
-        print(X_train[0,0])
-
-# X_test = audio_data[400:, :]
-# y_train = audio_label[:400]
-# y_test = audio_label[400:]
 
 # Standardize features by removing the mean and scaling to unit variance
-scaler = sklearn.preprocessing.StandardScaler(copy=False)
-scaler.fit_transform(X_train)
-scaler.transform(X_test)
+scaler = preprocessing.StandardScaler(copy=False)
+scaler.fit_transform(xTrain)
+scaler.transform(xTest)
 
 # Logistic regression model for music genre classification
-classifier = sklearn.linear_model.LogisticRegression(tol=1e-6, C=0.8, max_iter=200, random_state=0).fit(X_train, y_train)
-y_hat = classifier.predict(X_test)
-print('Baseline classifier accuracy: ' + str(round(100*np.mean(y_hat == y_test),2)) + ' %')
+classifier = linear_model.LogisticRegression(tol=1e-6, C=0.8, max_iter=200, random_state=0).fit(xTrain, yTrain)
+y_hat = classifier.predict(xTest)
+print('Baseline classifier accuracy: ' + str(round(100*np.mean(y_hat == yTest),2)) + ' %')

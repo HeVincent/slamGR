@@ -4,3 +4,4 @@
 *.bdic
 *.asv
 .vscode/
+*.npy

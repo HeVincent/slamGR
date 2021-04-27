@@ -9,14 +9,16 @@ yTrain = genres[0:400]
 yTest =  genres[400:]
 
 xTrain = bdd.csv2np('./data/mini/','miniTrack',1,400)
+np.save('xTrain.npy',xTrain)
 xTest = bdd.csv2np('./data/mini/','miniTrack',401,800)
+np.save('xTest.npy',xTest)
 
-# Standardize features by removing the mean and scaling to unit variance
-scaler = pp.StandardScaler(copy=False)
-scaler.fit_transform(xTrain)
-scaler.transform(xTest)
+# # Standardize features by removing the mean and scaling to unit variance
+# scaler = pp.StandardScaler(copy=False)
+# scaler.fit_transform(xTrain)
+# scaler.transform(xTest)
 
-# Logistic regression model for music genre classification
-classifier = sklearn.linear_model.LogisticRegression(tol=1e-6, C=0.8, max_iter=200, random_state=0).fit(X_train, y_train)
-y_hat = classifier.predict(xTest)
-print('Baseline classifier accuracy: ' + str(round(100*np.mean(y_hat == yTest),2)) + ' %')
+# # Logistic regression model for music genre classification
+# classifier = sklearn.linear_model.LogisticRegression(tol=1e-6, C=0.8, max_iter=200, random_state=0).fit(xTrain, yTrain)
+# y_hat = classifier.predict(xTest)
+# print('Baseline classifier accuracy: ' + str(round(100*np.mean(y_hat == yTest),2)) + ' %')
