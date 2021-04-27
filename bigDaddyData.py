@@ -1,6 +1,8 @@
 import csv
 import numpy as np
 import soundfile as sf
+import bigDaddyData as bdd
+import pandas as pd
 
 def csv2np(path,fileName, start, end):
     with open(path+fileName+str(start)+'.csv','r') as csv_file: # point at csv file
@@ -53,4 +55,17 @@ def csv2wav(sourcePath,sourceName,targetPath,targetName):
         track = np.genfromtxt(track_data,delimiter=',') # numpy array
 
         sf.write(targetPath+targetName+'.wav', track, 22050) # write to .wav
+    return
+
+def setMakeStore(xPath, xName, yPath, yName, trainRange, testRange): # indexing for range starts at 1 because of csv file naming
+    genres = pd.read_csv(yPath+yName+'.csv', sep=',', header=None).to_numpy()[:,0]
+    yTrain = genres[trainRange[0]-1:trainRange[1]]
+    np.save('yTrain.npy',yTrain)
+    yTest =  genres[testRange[0]-1:testRange[1]]
+    np.save('yTest.npy',yTest)
+
+    xTrain = bdd.csv2np(xPath,xName,trainRange[0],trainRange[1])
+    np.save('xTrain.npy',xTrain)
+    xTest = bdd.csv2np(xPath,xName,testRange[0],testRange[1])
+    np.save('xTest.npy',xTest)
     return
