@@ -75,7 +75,7 @@ def chrom(sourcePath,sourceName,targetPath,targetName):
     librosa.display.specshow(chroma, sr=sampling_rate, x_axis='time', y_axis='chroma')
     plt.title('Chromagram')
     plt.colorbar()
-    plt.savefig(targetPath,TargetName+'.png')
+    plt.savefig(targetPath,targetName+'.png')
     return
 
 def mfcc(sourcePath,sourceName,targetPath,targetName):
