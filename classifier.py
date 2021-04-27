@@ -21,4 +21,4 @@ scaler.transform(xTest)
 # Logistic regression model for music genre classification
 classifier = linear_model.LogisticRegression(tol=1e-6, C=0.8, max_iter=200, random_state=0).fit(xTrain, yTrain)
 y_hat = classifier.predict(xTest)
-print('Baseline classifier accuracy: ' + str(round(100*np.mean(y_hat == yTest),2)) + ' %')
+print('Baseline classifier accuracy: ' + str(round(100*np.mean(y_hat == yTest),2)) + ' %')c

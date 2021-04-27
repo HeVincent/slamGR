@@ -5,22 +5,34 @@ import scipy
 
 sampling_rate = 22050
 
-with open('./data/twoClass/tcTrack1.csv','r') as csv_file: # point at csv file
+class timeFeatures:
+    def __init__(self):
+        self.tempo = 0
+        self.mean = 0
+        self.std = 0
+        self.skew = 0
+        self.kurt = 0
+        self.plp = 0
 
-    csv_reader = csv.reader(csv_file, delimiter=',') #reader instance
+def getFeatures(path,fileName):
 
-    track_data = next(csv_reader) # numerical track data
-    track = np.genfromtxt(track_data,delimiter=',') # numpy array
+    features = timeFeatures()
 
-    # Parameters of the short-time Fourier transform
-    STFT_window = 2048
-    STFT_interval = 512
+    with open(path+fileName+'.csv','r') as csv_file: # point at csv file
 
-    # Example of time-domain features 
-    track_tempo = librosa.beat.tempo(track, sr=sampling_rate)
-    track_mean = np.mean(track)
-    track_standard_deviation = np.std(track)
-    track_skew = scipy.stats.skew(track)
-    track_kurtosis = scipy.stats.kurtosis(track)
+        csv_reader = csv.reader(csv_file, delimiter=',') #reader instance
+
+        track_data = next(csv_reader) # numerical track data
+        track = np.genfromtxt(track_data,delimiter=',') # numpy array
+
+        # Example of time-domain features 
+        features.tempo = librosa.beat.tempo(track, sr=sampling_rate)
+        features.mean = np.mean(track)
+        features.std = np.std(track)
+        features.skew = scipy.stats.skew(track)
+        features.kurt = scipy.stats.kurtosis(track)
+        features.plp = librosa.beat.plp(track)
+
+    return features
 
     
