@@ -4,12 +4,13 @@ import numpy as np
 import librosa
 import scipy
 import matplotlib.pyplot as plt
+import librosa.display
 
-STFT_window = 1949
-STFT_interval = 512
-sampling_rate = 22050
+# STFT_window = 1949
+# STFT_interval = 512
+# sampling_rate = 22050
 
-def spect(sourcePath,sourceName,targetPath,targetName):
+def spect(sourcePath,sourceName,targetPath,targetName,STFT_window,STFT_interval,sampling_rate):
 
     with open(sourcePath+sourceName+'.csv','r') as csv_file: # point at csv file
 
