@@ -1,7 +1,6 @@
 import csv
 import numpy as np
 import soundfile as sf
-import bigDaddyData as bdd
 import pandas as pd
 
 def csv2np(path,fileName, start, end):
