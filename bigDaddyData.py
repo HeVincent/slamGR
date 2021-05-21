@@ -63,8 +63,8 @@ def setMakeStore(xPath, xName, yPath, yName, trainRange, testRange): # indexing 
     yTest =  genres[testRange[0]-1:testRange[1]]
     np.save('yTest.npy',yTest)
 
-    xTrain = bdd.csv2np(xPath,xName,trainRange[0],trainRange[1])
+    xTrain = csv2np(xPath,xName,trainRange[0],trainRange[1])
     np.save('xTrain.npy',xTrain)
-    xTest = bdd.csv2np(xPath,xName,testRange[0],testRange[1])
+    xTest = csv2np(xPath,xName,testRange[0],testRange[1])
     np.save('xTest.npy',xTest)
     return

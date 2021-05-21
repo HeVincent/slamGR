@@ -1,3 +1,3 @@
 import bigDaddyData as bdd
+bdd.csvSplit('./raw/mini/','Audio_data_mini','./data/mini/','miniTrack') #separate csv for track
 
-bdd.csvSplit('./raw/mini/','Audio_data_mini','./data/mini/','miniTrack')

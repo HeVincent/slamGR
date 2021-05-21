@@ -6,9 +6,9 @@ import scipy
 import matplotlib.pyplot as plt
 import librosa.display
 
-# STFT_window = 1949
-# STFT_interval = 512
-# sampling_rate = 22050
+#STFT_window = 1949
+#STFT_interval = 512
+#sampling_rate = 22050
 
 def spect(sourcePath,sourceName,targetPath,targetName,STFT_window,STFT_interval,sampling_rate):
 
@@ -31,12 +31,7 @@ def spect(sourcePath,sourceName,targetPath,targetName,STFT_window,STFT_interval,
         log_spectrogram = librosa.amplitude_to_db(spectrogram)
         plt.figure(figsize=(15,5), dpi=110)
         librosa.display.specshow(log_spectrogram, sr=sampling_rate, hop_length=STFT_interval)
-        plt.xlabel('Time')
-        plt.ylabel('Frequency')
-        plt.colorbar()
-        plt.savefig(targetPath+targetName+'.png')
     return
-
 
 def psd(sourcePath,sourceName,targetPath,targetName):
 
